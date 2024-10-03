@@ -1,0 +1,52 @@
+{
+    "id": "send_message_to_slack_channel_via_http_action",
+    "code": "# Your JS code here",
+    "uuid": "5699e481-1cec-4b95-a4b2-3e6dd174a4e3",
+    "emoji": "🧩",
+    "title": "Slack Message Notifier",
+    "iconURL": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg",
+    "disabled": false,
+    "httpAction": {
+        "id": "4f777638-cdbd-4807-9044-6c4a261ecd7c",
+        "url": "https://slack.com/api/chat.postMessage",
+        "name": "",
+        "method": "POST",
+        "hasBody": true,
+        "hasHeaders": true,
+        "requestBody": "{\n  \"channel\": \"{channel}\",\n  \"text\": \"{message}\"\n}",
+        "requestHeaders": "{\n  \"Authorization\": \"Bearer {OAUTH_PLUGIN_ACCESS_TOKEN}\"\n}",
+        "requestBodyFormat": "form-data"
+    },
+    "openaiSpec": {
+        "name": "send_message_to_slack_channel_via_http_action",
+        "parameters": {
+            "type": "object",
+            "required": [
+                "channel",
+                "message"
+            ],
+            "properties": {
+                "channel": {
+                    "type": "string",
+                    "description": "This parameter specifies the target Slack channel name."
+                },
+                "message": {
+                    "type": "string",
+                    "description": "This parameter specifies the message a user wants to send to the Slack channel."
+                }
+            }
+        },
+        "description": "This function sends an authorized user's message to a specific Slack channel via an HTTP action."
+    },
+    "outputType": "respond_to_ai",
+    "oauthConfig": {
+        "scopes": "chat:write",
+        "tokenURL": "https://slack.com/api/oauth.v2.access",
+        "contentType": "urlencoded",
+        "authorizationURL": "https://slack.com/oauth/v2/authorize"
+    },
+    "userSettings": null,
+    "overviewMarkdown": "# Slack Message Notifier\nWith this plugin, you can send messages from TypingMind to a Slack channel once you authenticate with your Slack account.\n\n### 🔒 **Authentication Required**\nTo use this plugin, you need to authenticate with your Slack account via OAuth 2.0.\n- [👉 How to configure OAuth for TypingMind plugin](https://docs.typingmind.com/plugins/oauth-for-plugin)\n- [👉 How to install Slack App with OAuth](https://api.slack.com/authentication/oauth-v2)\n\n### 💡 **Example Usage**:\n\n> \"Send a summary of this document to the `notes` channel.\"\n>\n> *<< Your document content >>* ",
+    "authenticationType": "AUTH_TYPE_OAUTH",
+    "implementationType": "http"
+}
